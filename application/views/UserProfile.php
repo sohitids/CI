@@ -101,14 +101,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
             <p id="edit_error" style="display:none;color:red;"></p>
               <p id="edit_success" style="display:none;color:green;"></p>
-
+<script>
+  function imagePreview(evt){
+    let image=document.getElementById('image');
+    let imageUploadInputField=document.getElementById('imageUploadInputField');
+    image.src=URL.createObjectURL(evt.target.files[0]);   
+  }
+  </script>
               <!-- Profile Edit Form -->
               <form action="" method="post" enctype="multipart/form-data">
                 <div class="row mb-3">
                   <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                   <div class="col-md-8 col-lg-9">
-                    <img src="assets/img/profile-img.jpg" alt="Profile">
-                    <input type="file" class="form-control" id="imageUploadInputField" name="image">
+                    <img src="assets/img/profile-img.jpg" alt="Profile" id="image">
+                    <input type="file" class="form-control" id="imageUploadInputField"  onchange="imagePreview(event)" />
                    
                     <div class="pt-2">
                       <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
@@ -404,19 +410,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                      dataType: "json", 
                      success: function(result) {
                       console.log(result);
-                      if(result.status=='success'){
-                        $('#error_edit').hide();
-                        $('#error_edit').show();
-                        $('#error_edit').html(result.data);
+                      // if(result.status=='success'){
+                      //   $('#error_edit').hide();
+                      //   $('#error_edit').show();
+                      //   $('#error_edit').html(result.data);
 
 
-                      }else{
-                        $('#error_edit').show();
-                        $('#error_edit').hide();
-                        $('#error_edit').html(result.data);
+                      // }else{
+                      //   $('#error_edit').show();
+                      //   $('#error_edit').hide();
+                      //   $('#error_edit').html(result.data);
 
 
-                      }        
+                      // }        
                     }
                   
                 });  

@@ -209,7 +209,7 @@ public function changepassword(){
 			$data=$this->input->post();
 			print_r($data);
 			die('hi');
-			$config['upload_path']   = './uploads/'; 
+			$config['upload_path']   = './assets/UploadImage/'; 
 			$config['allowed_types'] = 'gif|jpg|png'; 
 			$config['max_size']      = 1024;
 			$this->load->library('upload', $config);
